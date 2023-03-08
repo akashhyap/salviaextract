@@ -47,7 +47,12 @@ const SingleProduct = ({ product, productVariations }) => {
         </div>
         <div className="product-info">
           <h1>{product.name}</h1>
-
+          <div
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(product?.price_html ?? ""),
+            }}
+            className="product-price mb-5 text-xl"
+          />
           {"variable" === product?.type ? (
             <>
               <div className="variation-select">
