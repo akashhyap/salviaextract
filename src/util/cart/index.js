@@ -13,14 +13,14 @@ import { isArray, isEmpty } from "lodash";
  * @param {Function} setIsAddedToCart Sets A Boolean Value If Product Is Added To Cart.
  * @param {Function} setLoading Sets A Boolean Value For Loading State.
  */
-export const addToCart = ( productId, qty = 1, setCart, setIsAddedToCart, setLoading ) => {
+export const addToCart = ( productId, qty = 1, selectedVariation, setCart, setIsAddedToCart, setLoading ) => {
 	const storedSession = getSession();
 	const addOrViewCartConfig = getApiCartConfig();
 	
 	setLoading(true);
-	
+	console.log("selectedVariation:", selectedVariation);
 	axios.post( CART_ENDPOINT, {
-			product_id: productId,
+			product_id: selectedVariation ? selectedVariation.id : productId,
 			quantity: qty,
 		},
 		addOrViewCartConfig,

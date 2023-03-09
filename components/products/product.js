@@ -14,7 +14,7 @@ const Product = ({ product }) => {
   return (
     <div className="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition overflow-hidden">
       <Link href={`/products/${product?.slug}`} legacyBehavior>
-        <a className="relative pt-[100%]">
+        <a className="relative pt-[85%]">
           <Image
             src={product?.images?.[0]?.src ?? ""}
             alt="Image product"
@@ -30,12 +30,20 @@ const Product = ({ product }) => {
           {product.name}
         </h3>
         <div
-          className="mt-2"
+          className="py-2"
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(product?.price_html ?? ""),
           }}
         />
-        {"simple" === productType ? <AddToCart product={product} /> : null}
+        {"simple" === productType ? (
+          <AddToCart product={product} />
+        ) : (
+          <Link href={`/products/${product?.slug}`} legacyBehavior>
+            <a className="inline-block bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+              Select Option
+            </a>
+          </Link>
+        )}
       </div>
     </div>
   );

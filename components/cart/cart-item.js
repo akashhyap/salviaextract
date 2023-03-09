@@ -10,7 +10,7 @@ const CartItem = ({ item, products, setCart }) => {
   const [removingProduct, setRemovingProduct] = useState(false);
   const productImg = item?.data?.images?.[0] ?? "";
 
-  console.log("item", item);
+  // console.log("item", item);
 
   /**
    * Do not allow state update on an unmounted component.
@@ -110,9 +110,7 @@ const CartItem = ({ item, products, setCart }) => {
       <div className="col-span-2 cart-right-col">
         <div className="flex flex-col h-full">
           <div className="cart-product-title-wrap relative">
-            <h2 className="text-2xl">
-              {item?.data?.name}
-            </h2>
+            <h2 className="text-2xl">{item?.data?.name}</h2>
             {/* {item?.data?.description ? (
               <div
                 dangerouslySetInnerHTML={{
@@ -141,7 +139,7 @@ const CartItem = ({ item, products, setCart }) => {
               <Image
                 className="woo-next-cart-item-spinner"
                 width="24"
-				height="24"
+                height="24"
                 src="/cart-spinner.gif"
                 alt="spinner"
               />

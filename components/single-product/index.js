@@ -15,15 +15,15 @@ const SingleProduct = ({ product, productVariations }) => {
     const variation = productVariations
       .flatMap((variationGroup) => variationGroup.variations)
       .find((variation) => {
-        console.log("variation ID:", variation.id, typeof variation.id);
-        console.log("selected ID:", selectedId, typeof selectedId);
+        // console.log("variation ID:", variation.id, typeof variation.id);
+        // console.log("selected ID:", selectedId, typeof selectedId);
         return variation.id === selectedId;
       });
 
     setSelectedVariation(variation);
 
-    console.log("Selected Id:", selectedId);
-    console.log("Selected variation:", variation);
+    // console.log("Selected Id:", selectedId);
+    // console.log("Selected variation:", variation);
   };
 
   return (
@@ -62,6 +62,7 @@ const SingleProduct = ({ product, productVariations }) => {
                   onChange={handleVariationChange}
                   className="border rounded-sm p-1 ml-2"
                 >
+                  <option value="">Select</option>
                   {productVariations
                     .flatMap((variationGroup) => variationGroup.variations)
                     .map((variation) => (
@@ -84,7 +85,8 @@ const SingleProduct = ({ product, productVariations }) => {
             }}
             className="product-description my-5 [&>p]:text-lg [&>p]:py-4 [&>p]:leading-8 [&>ul]:list-disc [&>ul]:pl-4 [&>ul>li]:leading-8 [&>ol]:list-decimal [&>ol]:pl-4 [&>ol>li]:leading-8"
           />
-          {"simple" === product?.type ? <AddToCart product={product} /> : null}
+          <AddToCart product={product} selectedVariation={selectedVariation} />
+          {/* {"simple" === product?.type ? <AddToCart product={product} /> : null} */}
         </div>
       </div>
       <div className="flex max-w-6xl mx-auto">
