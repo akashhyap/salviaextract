@@ -23,7 +23,8 @@ const CartItemsContainer = () => {
 	};
 	
 	return (
-		<div className="content-wrap-cart">
+		<div className="content-wrap-cart max-w-6xl mx-auto py-10">
+			<h1 className="font-semibold uppercase pb-5">Cart</h1>
 			{ cart ? (
 				<div className="woo-next-cart-table-row grid lg:grid-cols-3 gap-4">
 					{/*Cart Items*/ }
@@ -41,10 +42,10 @@ const CartItemsContainer = () => {
 					
 					{/*Cart Total*/ }
 					<div className="woo-next-cart-total-container lg:col-span-1 p-5 pt-0">
-						<h2>Cart Total</h2>
-						<div className="flex grid grid-cols-3 bg-gray-100 mb-4">
+						<h2 className='pb-2'>Cart Total</h2>
+						<div className="grid grid-cols-3 bg-gray-100 mb-4">
 							<p className="col-span-2 p-2 mb-0">Total({totalQty})</p>
-							<p className="col-span-1 p-2 mb-0">{cartItems?.[0]?.currency ?? ''}{ totalPrice }</p>
+							<p className="col-span-1 p-2 mb-0">{cartItems?.[0]?.currency ?? ''}{ totalPrice.toFixed(2) }</p>
 						</div>
 						
 						<div className="flex justify-between">
