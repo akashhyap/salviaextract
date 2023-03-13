@@ -39,10 +39,3 @@ export const getProductBySlug = async (productSlug = "") => {
 export const getProductVariationsData = async (productId) => {
   return await api.get(`products/${productId}/variations`);
 };
-
-/**
- * Get Cart Data.
- *
- * @return {Promise<object>} Cart data.
- */
-

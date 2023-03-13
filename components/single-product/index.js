@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import AddToCart from "../cart/add-to-cart";
-// import { redirectToCheckout } from "@/util/products";
-
+// import ExternalLink from '../products/external-link';
 // import ProductGallery from './product-gallery';
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
-import Link from "next/link";
 
 const SingleProduct = ({ product, productVariations }) => {
   console.log(product);
@@ -29,7 +27,6 @@ const SingleProduct = ({ product, productVariations }) => {
     // console.log("Selected variation:", variation);
   };
 
- 
   return (
     <div className="single-product pt-10">
       <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-10">
@@ -100,15 +97,6 @@ const SingleProduct = ({ product, productVariations }) => {
             className="product-description my-5 [&>p]:text-lg [&>p]:py-4 [&>p]:leading-8 [&>ul]:list-disc [&>ul]:pl-4 [&>ul>li]:leading-8 [&>ol]:list-decimal [&>ol]:pl-4 [&>ol>li]:leading-8"
           />
           <AddToCart product={product} selectedVariation={selectedVariation} />
-        
-       
-        <br/>
-          <Link legacyBehavior href="https://woocommerce-186938-3327038.cloudwaysapps.com/checkout/">
-            checkout
-          </Link>
-
-
-
           {/* {"simple" === product?.type ? <AddToCart product={product} /> : null} */}
         </div>
       </div>
