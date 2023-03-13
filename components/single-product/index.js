@@ -4,6 +4,7 @@ import AddToCart from "../cart/add-to-cart";
 // import ProductGallery from './product-gallery';
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
+import Link from "next/link";
 
 const SingleProduct = ({ product, productVariations }) => {
   console.log(product);
@@ -98,6 +99,8 @@ const SingleProduct = ({ product, productVariations }) => {
           />
           <AddToCart product={product} selectedVariation={selectedVariation} />
           {/* {"simple" === product?.type ? <AddToCart product={product} /> : null} */}
+         
+       
         </div>
       </div>
       <div className="flex max-w-6xl mx-auto">

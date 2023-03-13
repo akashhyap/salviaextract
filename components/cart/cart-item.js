@@ -3,6 +3,7 @@ import { isEmpty } from "lodash";
 import Image from "next/image";
 import { deleteCartItem, updateCart } from "../../src/util/cart";
 import DOMPurify from "isomorphic-dompurify";
+import Link from "next/link";
 
 const CartItem = ({ item, products, setCart }) => {
   const [productCount, setProductCount] = useState(item.quantity);
@@ -196,6 +197,7 @@ const CartItem = ({ item, products, setCart }) => {
                 />
               </svg>
             </button>
+         
           </footer>
         </div>
       </div>

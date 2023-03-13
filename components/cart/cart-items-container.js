@@ -54,7 +54,7 @@ const CartItemsContainer = () => {
               {/*Clear entire cart*/}
               <div className="clear-cart">
                 <button
-                  className="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-gray-600 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-800"
+                  className="text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-gray-600 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-800"
                   onClick={(event) => handleClearCart(event)}
                   disabled={isClearCartProcessing}
                 >
@@ -64,13 +64,14 @@ const CartItemsContainer = () => {
                 </button>
               </div>
               {/*Checkout*/}
-              <Link href="/checkout">
-                <button className="text-white duration-500 bg-brand-orange hover:bg-brand-royal-blue focus:ring-4 focus:text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900">
-                  <span className="woo-next-cart-checkout-txt">
-                    Proceed to Checkout
-                  </span>
-                  <i className="fas fa-long-arrow-alt-right" />
-                </button>
+
+              <Link
+                legacyBehavior
+                href="https://woocommerce-186938-3327038.cloudwaysapps.com/checkout"
+              >
+                <a className="duration-500 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow bg-white hover:bg-gray-100 ml-3">
+                 Checkout
+                </a>
               </Link>
             </div>
           </div>
