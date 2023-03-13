@@ -193,6 +193,8 @@ const CartItem = ({ item, products, setCart }) => {
                   />
                 </svg>
               </button>
+
+              
           </footer>
         </div>
       </div>

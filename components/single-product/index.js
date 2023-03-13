@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import AddToCart from "../cart/add-to-cart";
-// import ExternalLink from '../products/external-link';
+// import { redirectToCheckout } from "@/util/products";
+
 // import ProductGallery from './product-gallery';
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
+import Link from "next/link";
 
 const SingleProduct = ({ product, productVariations }) => {
+  console.log(product);
   const [selectedVariationId, setSelectedVariationId] = useState();
   const [selectedVariation, setSelectedVariation] = useState();
 
@@ -26,6 +29,7 @@ const SingleProduct = ({ product, productVariations }) => {
     // console.log("Selected variation:", variation);
   };
 
+ 
   return (
     <div className="single-product pt-10">
       <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-10">
@@ -46,13 +50,27 @@ const SingleProduct = ({ product, productVariations }) => {
           )}
         </div>
         <div className="product-info">
-          <h1>{product.name}</h1>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(product?.price_html ?? ""),
-            }}
-            className="product-price mb-5 text-xl"
-          />
+          <h1 className="text-4xl pb-4">{product.name}</h1>
+          <div className="flex justify-between">
+            {selectedVariation ? (
+              <p className="price mb-5 text-xl">{`$${selectedVariation.price}`}</p>
+            ) : (
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: DOMPurify.sanitize(product?.price_html ?? ""),
+                }}
+                className="product-price mb-5 text-xl"
+              />
+            )}
+            <p>
+              {product?.stock_status === "instock" ? (
+                <span className="bg-green-400 text-sm px-2 py-1 rounded-md">In stock</span>
+              ) : (
+                <span className="bg-red-400 text-sm px-2 py-1 rounded-md">Out of stock</span>
+              )}
+            </p>
+          </div>
+
           {"variable" === product?.type ? (
             <>
               <div className="variation-select">
@@ -72,10 +90,6 @@ const SingleProduct = ({ product, productVariations }) => {
                     ))}
                 </select>
               </div>
-
-              <p className="price mt-2 text-2xl">
-                {selectedVariation ? `$${selectedVariation.price}` : ""}
-              </p>
             </>
           ) : null}
 
@@ -86,6 +100,15 @@ const SingleProduct = ({ product, productVariations }) => {
             className="product-description my-5 [&>p]:text-lg [&>p]:py-4 [&>p]:leading-8 [&>ul]:list-disc [&>ul]:pl-4 [&>ul>li]:leading-8 [&>ol]:list-decimal [&>ol]:pl-4 [&>ol>li]:leading-8"
           />
           <AddToCart product={product} selectedVariation={selectedVariation} />
+        
+       
+        <br/>
+          <Link legacyBehavior href="https://woocommerce-186938-3327038.cloudwaysapps.com/checkout/">
+            checkout
+          </Link>
+
+
+
           {/* {"simple" === product?.type ? <AddToCart product={product} /> : null} */}
         </div>
       </div>

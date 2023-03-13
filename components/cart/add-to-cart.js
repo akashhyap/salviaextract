@@ -6,7 +6,7 @@ import Link from "next/link";
 import cx from "classnames";
 
 const AddToCart = ({ product, selectedVariation }) => {
-//   console.log("selectedVariation:", selectedVariation);
+  //   console.log("selectedVariation:", selectedVariation);
   const [cart, setCart] = useContext(AppContext);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -24,7 +24,7 @@ const AddToCart = ({ product, selectedVariation }) => {
 
   return (
     <>
-      <button
+      {"simple" === product?.type ? <button
         className={addToCartBtnClasses}
         onClick={() =>
           addToCart(
@@ -39,7 +39,24 @@ const AddToCart = ({ product, selectedVariation }) => {
         disabled={loading}
       >
         {loading ? "Adding..." : "Add to cart"}
-      </button>
+      </button>: null}
+
+      {"variable" === product?.type ? <button
+        className={addToCartBtnClasses}
+        onClick={() =>
+          addToCart(
+            product?.id ?? 0,
+            1,
+            selectedVariation,
+            setCart,
+            setIsAddedToCart,
+            setLoading
+          )
+        }
+        disabled={!selectedVariation}
+      >
+        {loading ? "Adding..." : "Add to cart"}
+      </button>: null}
       {isAddedToCart && !loading ? (
         <Link href="/cart" legacyBehavior>
           <a className="bg-white hover:bg-gray-100 text-gray-800 font-semibold ml-4 py-2 px-4 border border-gray-400 rounded shadow">

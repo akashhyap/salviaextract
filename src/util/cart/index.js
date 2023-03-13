@@ -18,7 +18,7 @@ export const addToCart = ( productId, qty = 1, selectedVariation, setCart, setIs
 	const addOrViewCartConfig = getApiCartConfig();
 	
 	setLoading(true);
-	console.log("selectedVariation:", selectedVariation);
+	// console.log("selectedVariation:", selectedVariation);
 	axios.post( CART_ENDPOINT, {
 			product_id: selectedVariation ? selectedVariation.id : productId,
 			quantity: qty,
