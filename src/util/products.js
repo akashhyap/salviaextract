@@ -39,3 +39,22 @@ export const getProductBySlug = async (productSlug = "") => {
 export const getProductVariationsData = async (productId) => {
   return await api.get(`products/${productId}/variations`);
 };
+
+/**
+ * Create an Order in WooCommerce.
+ *
+ * @param {Object} orderData - The order data.
+ * @param {string} consumerKey - The WooCommerce Rest API consumer key.
+ * @param {string} consumerSecret - The WooCommerce Rest API consumer secret.
+ * @returns {Promise<Object>} The created order.
+ */
+export const createOrder = async (orderData, consumerKey, consumerSecret) => {
+  const api = new WooCommerceRestApi({
+    url: process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL,
+    consumerKey: consumerKey,
+    consumerSecret: consumerSecret,
+    version: "wc/v3",
+  });
+
+  return await api.post("orders", orderData);
+};

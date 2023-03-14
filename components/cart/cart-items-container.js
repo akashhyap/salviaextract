@@ -21,6 +21,21 @@ const CartItemsContainer = () => {
     await clearCart(setCart, setClearCartProcessing);
   };
 
+  const checkoutUrl =
+    "https://woocommerce-186938-3327038.cloudwaysapps.com/cart";
+
+ 
+    function setCartDataToCookies() {
+      // Define or initialize the cartItems variable
+      // const cartItems = [{ id: 1, name: 'Product 1', price: 10.99 }, { id: 2, name: 'Product 2', price: 19.99 }];
+    
+      // Set the cookie with a path of "/checkout" and a domain of "woocommerce-186938-3327038.cloudwaysapps.com"
+      document.cookie = `cart=${JSON.stringify(cartItems)}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/checkout; domain=woocommerce-186938-3327038.cloudwaysapps.com;  SameSite=None; Secure`;
+    
+      console.log("document.cookie:",document.cookie);
+    }
+    
+  
   return (
     <div className="content-wrap-cart max-w-6xl mx-auto py-10">
       <h1 className="font-semibold uppercase pb-5">Cart</h1>
@@ -63,16 +78,22 @@ const CartItemsContainer = () => {
                   </span>
                 </button>
               </div>
+
               {/*Checkout*/}
 
-              <Link
-                legacyBehavior
-                href="https://woocommerce-186938-3327038.cloudwaysapps.com/checkout"
+              {/* <a
+                href={checkoutUrl}
+                onClick={setCartDataToCookies}
+                className="duration-500 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow bg-white hover:bg-gray-100 ml-3"
               >
-                <a className="duration-500 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow bg-white hover:bg-gray-100 ml-3">
-                 Checkout
-                </a>
-              </Link>
+                Checkout
+              </a> */}
+              <button
+                onClick={setCartDataToCookies}
+                className="duration-500 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded-lg shadow bg-white hover:bg-gray-100 ml-3"
+              >
+                Checkout
+              </button>
             </div>
           </div>
         </div>
