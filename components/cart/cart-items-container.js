@@ -24,18 +24,14 @@ const CartItemsContainer = () => {
   const checkoutUrl =
     "https://woocommerce-186938-3327038.cloudwaysapps.com/cart";
 
- 
     function setCartDataToCookies() {
-      // Define or initialize the cartItems variable
-      const cartItems = [{ id: 1, name: 'Product 1', price: 10.99 }, { id: 2, name: 'Product 2', price: 19.99 }];
+      document.cookie = `cart=${JSON.stringify(cartItems)}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/; domain=.woocommerce-186938-3327038.cloudwaysapps.com; SameSite=None; Secure`;
     
-      // Set the cookie with a path of "/checkout" and a domain of "woocommerce-186938-3327038.cloudwaysapps.com"
-      document.cookie = `cart=${JSON.stringify(cartItems)}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/checkout; domain=woocommerce-186938-3327038.cloudwaysapps.com;  SameSite=None; Secure`;
-    
-      console.log("document.cookie:",document.cookie);
+      console.log("document.cookie=>", document.cookie);
     }
     
-  
+    
+
   return (
     <div className="content-wrap-cart max-w-6xl mx-auto py-10">
       <h1 className="font-semibold uppercase pb-5">Cart</h1>
